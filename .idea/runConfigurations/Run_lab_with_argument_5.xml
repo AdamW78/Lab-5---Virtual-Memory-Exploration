@@ -1,7 +1,17 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run lab with argument 5" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="5" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Lab 5 - Virtual Memory Exploration" TARGET_NAME="lab" CONFIG_NAME="lab" version="1" RUN_PATH="lab">
-    <method v="2">
-      <option name="CLION.COMPOUND.BUILD" enabled="true" />
-    </method>
+  <configuration default="false" name="Run lab with argument 5" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value="make clean all &amp;&amp; setarch --addr-no-randomize ./lab 5" />
+    <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+    <option name="SCRIPT_PATH" value="" />
+    <option name="SCRIPT_OPTIONS" value="" />
+    <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+    <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+    <option name="INTERPRETER_PATH" value="/bin/bash" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="EXECUTE_IN_TERMINAL" value="true" />
+    <option name="EXECUTE_SCRIPT_FILE" value="false" />
+    <envs />
+    <method v="2" />
   </configuration>
 </component>

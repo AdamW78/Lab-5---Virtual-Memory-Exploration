@@ -33,7 +33,18 @@ void labStuff(int which) {
         }
 
     } else if (which == 4) {
-
+        char *ptr;
+        ptr = mmap((void*) 0x5555555bafff + 0x200000 /* hint address */,
+                4096 /* length */,
+                PROT_READ | PROT_WRITE,
+                MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED_NOREPLACE,
+                -1, /* file descriptor (-1 for "none") */
+                0
+        );
+        if (ptr == MAP_FAILED) { printf("Failure!"); }
+        for (int i = 0; i < 4096; i++) {
+            ptr[i] = 'a';
+        }
     }
 }
 

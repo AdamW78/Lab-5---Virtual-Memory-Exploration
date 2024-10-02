@@ -34,7 +34,14 @@ void labStuff(int which) {
 
     } else if (which == 4) {
         char *ptr;
-        ptr = mmap((void*) 0x5555555bafff + 0x200000 /* hint address */,
+        long heap_address = 0x5555555bbfff;
+        long alloc_location = heap_address + 0x200000;
+        long remainder = alloc_location % 4096;
+        long page_aligned_alloc_location = alloc_location;
+        if (remainder != 0) {
+            page_aligned_alloc_location = alloc_location - remainder + 4096;
+        }
+        ptr = mmap((void*) page_aligned_alloc_location /* hint address */,
                 4096 /* length */,
                 PROT_READ | PROT_WRITE,
                 MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED_NOREPLACE,

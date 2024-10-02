@@ -27,6 +27,10 @@ void labStuff(int which) {
             }
         }
     } else if (which == 3) {
+        alignas (4096) volatile char* allocation = (volatile char *) malloc(1024 * 1024);
+        for (int i = 0; i < 4096 * 32; i += 4096) {
+            allocation[i] = 'a';
+        }
 
     } else if (which == 4) {
 

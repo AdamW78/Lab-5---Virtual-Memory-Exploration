@@ -52,6 +52,26 @@ void labStuff(int which) {
         for (int i = 0; i < 4096; i++) {
             ptr[i] = 'a';
         }
+    } else if (which == 5) {
+        char *ptr;
+        long heap_address = 0x5555555bbfff;
+        long alloc_location = heap_address + 0x10000000000;
+        long remainder = alloc_location % 0x1000;
+        long page_aligned_alloc_location = alloc_location;
+        if (remainder != 0) {
+            page_aligned_alloc_location = alloc_location - remainder + 0x1000;
+        }
+        ptr = mmap((void*) page_aligned_alloc_location /* hint address */,
+                0x1000 /* length */,
+                PROT_READ | PROT_WRITE,
+                MAP_PRIVATE | MAP_ANONYMOUS | MAP_FIXED_NOREPLACE,
+                -1, /* file descriptor (-1 for "none") */
+                0
+        );
+        if (ptr == MAP_FAILED) { printf("Failure!"); }
+        for (int i = 0; i < 0x1000; i++) {
+            ptr[i] = 'a';
+        }
     }
 }
 

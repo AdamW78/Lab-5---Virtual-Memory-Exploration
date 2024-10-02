@@ -5,12 +5,16 @@
 #include <sys/mman.h>   // for mmap() which you'll likely use
 #include <stdalign.h>
 
-
+alignas(4096) volatile char global_array[4096 * 32];
 
 void labStuff(int which) {
     if (which == 0) {
         /* do nothing */
     } else if (which == 1) {
+        // Change the code in lab.c’s labStuff so that when the parameter is 1, it runs some code to write to the array.
+        for (int i = 0; i < 4096 * 32; i++) {
+            global_array[i] = 'a';
+        }
 
     } else if (which == 2) {
 

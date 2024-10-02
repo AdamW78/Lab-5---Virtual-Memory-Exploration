@@ -17,6 +17,15 @@ void labStuff(int which) {
         }
 
     } else if (which == 2) {
+        volatile char* allocation = (volatile char *) malloc(1024 * 1024);
+        for (int i = 0; i < 1024; i++) {
+            char access = allocation[i];
+            if (access == 0) {
+                __asm__(""); // force the compiler to not optimize this away
+            } else {
+                __asm__(" "); // force the compiler to not optimize this away
+            }
+        }
 
     } else if (which == 3) {
 
